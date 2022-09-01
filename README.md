@@ -19,6 +19,9 @@
           </ul>
         </li>
         <li>
+          <a href="#protótipos">Protótipos</a>
+        </li>
+        <li>
           <a href="#dados-dos-usuários">Dados dos usuários</a>
         </li>
         <li>
@@ -144,6 +147,18 @@ Efetuado o login, o administrador será redirecionado para a <strong>tela da pes
 </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- PROTÓTIPOS -->
+
+## Protótipos
+
+- Tela de Login
+
+<img src="./front-end/src/images/login-bem-gelada.png">
+
+- Tela da pessoa administradora
+
+<img src="./front-end/src/images/admin-page-bem-gelada.png">
 
 <!-- DADOS DOS USUÁRIOS -->
 
