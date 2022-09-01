@@ -61,10 +61,10 @@ Este projeto finalizou o módulo de Back-end no curso de Desenvolvimento Web da 
   </ol>
 </p>
 <p align="justify">
-As senhas dos usuários são convertidas e armazenadas no banco de dados em <strong>hashs md5</strong>. A tradução da senha inserida pelo usuário é realizada no momento da requisição de login feita para a <b>API</b>.
+As senhas dos usuários são convertidas e armazenadas no banco de dados como <strong>hashs md5</strong>. A tradução da senha inserida pelo usuário é realizada no momento da requisição de login feita para a <b>API</b>.
 </p>
 <p align="justify">
-Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, para se verificar se o mesmo tem permissão para realização de determinadas requisições. 
+Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, validando se o mesmo tem permissão para realização de determinadas requisições. 
 </p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -83,7 +83,7 @@ Compõem o fluxo comum a todos os usuários:
 
 :small_blue_diamond: A <strong>tela de login</strong>, que da acesso as telas dos fluxos seguintes.
 
-:small_blue_diamond: A <strong>tela de registro</strong>, onde a pessoa deverá inserir seu nome, e-mail e senha para registrar um novo usuário. A rota utilizada aqui sempre criará um usuário do tipo cliente. Uma vez cadastrado, o usuário já é redirecionado para a <strong>tela com a lista dos produtos</strong>.
+:small_blue_diamond: A <strong>tela de registro</strong>, onde a pessoa usuária deverá inserir seu nome, e-mail e senha para registrar um novo usuário. A rota utilizada aqui sempre criará um usuário do tipo cliente. Uma vez cadastrado, o usuário já é redirecionado para a <strong>tela com a lista dos produtos</strong>.
 </p>
 </details> 
 <details>
@@ -130,11 +130,13 @@ Efetuado o login, o administrador será redirecionado para a <strong>tela da pes
 <!-- DADOS DOS USUÁRIOS -->
 ## Dados dos usuários
 
-| Tipo  | ID | Nome | E-mail | Senha original | Senha md5 no banco |
+A tabela abaixo contém os dados dos usuários que são cadastrados ao resetar o banco de dados.
+
+| ID  | Tipo | Nome | E-mail | Senha original | Senha md5 no banco |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-|  administrator | 1 | Delivery App Admin |`adm@deliveryapp.com` | `--adm2@21!!--` | `a4c86edecc5aee06eff8fdeda69e0d04`
-| seller | 2 | Fulana Pereira |`fulana@deliveryapp.com` | `fulana@123` | `3c28d2b0881bf46457a853e0b07531c6` |
-| customer | 3 | Cliente Zé Birita |`zebirita@email.com` | `$#zebirita#$` | `1c37466c159755ce1fa181bd247cb925` |
+| 1 | administrator | Delivery App Admin |`adm@deliveryapp.com` | `--adm2@21!!--` | `a4c86edecc5aee06eff8fdeda69e0d04`
+| 2 | seller | Fulana Pereira |`fulana@deliveryapp.com` | `fulana@123` | `3c28d2b0881bf46457a853e0b07531c6` |
+| 3 | customer | Cliente Zé Birita |`zebirita@email.com` | `$#zebirita#$` | `1c37466c159755ce1fa181bd247cb925` |
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- TECNOLOGIAS -->
