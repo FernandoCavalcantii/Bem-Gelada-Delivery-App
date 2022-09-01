@@ -1,0 +1,254 @@
+
+> sd-0x-project-delivery-app@1.0.0 test:dev
+> NODE_ENV=development npm run jest -i --forceExit --config=./jest.config.js "07"
+
+
+> sd-0x-project-delivery-app@1.0.0 jest
+> ./node_modules/.bin/jest "07"
+
+● Multiple configurations found:
+    * /home/fernando/Desktop/Developer/Projetos/sd-017-project-delivery-app/jest.config.js
+    * `jest` key in /home/fernando/Desktop/Developer/Projetos/sd-017-project-delivery-app/package.json
+
+  Implicit config resolution does not allow multiple configuration files.
+  Either remove unused config files or select one explicitly with `--config`.
+
+  Configuration Documentation:
+  https://jestjs.io/docs/configuration.html
+
+  console.log
+    
+    Rodando novo arquivo de teste com as configurações:
+     {
+      file: '07seller_orders.test.js',
+      startedAt: '8/17/2022, 7:50:53 PM',
+      environment: 'development',
+      database: {
+        restore: true,
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'password',
+        defaultSuffix: '-dev',
+        defaultDB: 'delivery-app-dev'
+      },
+      puppeteer: {
+        timeout: 10000,
+        snapshots: './__tests__/reports/report-1660776652'
+      },
+      frontEndHost: 'http://localhost:3000'
+    }
+
+      at ../config/setupTest.js:23:13
+
+  console.log
+    Testando o requisito:
+    `27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo > O avaliador ira testar se existem data-testids para até os dez primeiros itens contidos na tabela 'sales'`
+
+      at Object.<anonymous> (../config/setupTest.js:60:11)
+
+  console.log
+    Amostragem de itens utilizada no teste:
+    `27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo > O avaliador ira testar se existem data-testids para até os dez primeiros itens contidos na tabela 'sales'`
+    Preço total: 59,73
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:2:11)
+
+  console.log
+    ┌─────────┬───────────┬───────────────────────┬──────────┬───────────┬──────────┐
+    │ (index) │ productId │         name          │ quantity │ unitPrice │ subTotal │
+    ├─────────┼───────────┼───────────────────────┼──────────┼───────────┼──────────┤
+    │    0    │     2     │   'Heineken 600ml'    │    2     │  '7,50'   │ '15,00'  │
+    │    1    │     5     │     'Skol 269ml'      │    1     │  '2,19'   │  '2,19'  │
+    │    2    │     9     │     'Becks 600ml'     │    4     │  '8,89'   │ '35,56'  │
+    │    3    │    11     │ 'Stella Artois 275ml' │    2     │  '3,49'   │  '6,98'  │
+    └─────────┴───────────┴───────────────────────┴──────────┴───────────┴──────────┘
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:8:11)
+
+  console.log
+    Dados do pedido utilizada no teste:
+    `27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo > O avaliador ira testar se existem data-testids para até os dez primeiros itens contidos na tabela 'sales'`
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:2:11)
+
+  console.log
+    ┌─────────────────┬────────────────────────────┐
+    │     (index)     │           Values           │
+    ├─────────────────┼────────────────────────────┤
+    │     saleId      │             11             │
+    │     userId      │             3              │
+    │    sellerId     │             2              │
+    │   totalPrice    │          '59.73'           │
+    │ deliveryAddress │      'Célia Avenida'       │
+    │ deliveryNumber  │           '632'            │
+    │    saleDate     │ '2022-08-17T22:51:09.360Z' │
+    └─────────────────┴────────────────────────────┘
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:5:11)
+
+  console.log
+    Testando o requisito:
+    `28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos > O avaliador ira testar se os dados associados aos data-testids dos dez primeiros itens batem com os do banco de dados`
+
+      at Object.<anonymous> (../config/setupTest.js:60:11)
+
+  console.log
+    Amostragem de itens utilizada no teste:
+    `28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos > O avaliador ira testar se os dados associados aos data-testids dos dez primeiros itens batem com os do banco de dados`
+    Preço total: 65,65
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:2:11)
+
+  console.log
+    ┌─────────┬───────────┬───────────────────────────┬──────────┬───────────┬──────────┐
+    │ (index) │ productId │           name            │ quantity │ unitPrice │ subTotal │
+    ├─────────┼───────────┼───────────────────────────┼──────────┼───────────┼──────────┤
+    │    0    │     6     │ 'Skol Beats Senses 313ml' │    4     │  '4,49'   │ '17,96'  │
+    │    1    │     9     │       'Becks 600ml'       │    3     │  '8,89'   │ '26,67'  │
+    │    2    │    10     │ 'Skol Beats Senses 269ml' │    1     │  '3,57'   │  '3,57'  │
+    │    3    │    11     │   'Stella Artois 275ml'   │    5     │  '3,49'   │ '17,45'  │
+    └─────────┴───────────┴───────────────────────────┴──────────┴───────────┴──────────┘
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:8:11)
+
+  console.log
+    Dados do pedido utilizada no teste:
+    `28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos > O avaliador ira testar se os dados associados aos data-testids dos dez primeiros itens batem com os do banco de dados`
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:2:11)
+
+  console.log
+    ┌─────────────────┬────────────────────────────┐
+    │     (index)     │           Values           │
+    ├─────────────────┼────────────────────────────┤
+    │     saleId      │             12             │
+    │     userId      │             3              │
+    │    sellerId     │             2              │
+    │   totalPrice    │          '65.65'           │
+    │ deliveryAddress │        'Xavier Rua'        │
+    │ deliveryNumber  │           '188'            │
+    │    saleDate     │ '2022-08-17T22:51:27.192Z' │
+    └─────────────────┴────────────────────────────┘
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:5:11)
+
+  console.log
+    Testando o requisito:
+    `29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo > O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo`
+
+      at Object.<anonymous> (../config/setupTest.js:60:11)
+
+  console.log
+    Amostragem de itens utilizada no teste:
+    `29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo > O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo`
+    Preço total: 99,79
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:2:11)
+
+  console.log
+    ┌─────────┬───────────┬───────────────────────────┬──────────┬───────────┬──────────┐
+    │ (index) │ productId │           name            │ quantity │ unitPrice │ subTotal │
+    ├─────────┼───────────┼───────────────────────────┼──────────┼───────────┼──────────┤
+    │    0    │     2     │     'Heineken 600ml'      │    5     │  '7,50'   │ '37,50'  │
+    │    1    │     4     │      'Brahma 600ml'       │    2     │  '7,50'   │ '15,00'  │
+    │    2    │     5     │       'Skol 269ml'        │    3     │  '2,19'   │  '6,57'  │
+    │    3    │     6     │ 'Skol Beats Senses 313ml' │    2     │  '4,49'   │  '8,98'  │
+    │    4    │     9     │       'Becks 600ml'       │    2     │  '8,89'   │ '17,78'  │
+    │    5    │    11     │   'Stella Artois 275ml'   │    4     │  '3,49'   │ '13,96'  │
+    └─────────┴───────────┴───────────────────────────┴──────────┴───────────┴──────────┘
+
+      at showCurrentCart (actions/customer/showCurrentCart.js:8:11)
+
+  console.log
+    Dados do pedido utilizada no teste:
+    `29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo > O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo`
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:2:11)
+
+  console.log
+    ┌─────────────────┬────────────────────────────┐
+    │     (index)     │           Values           │
+    ├─────────────────┼────────────────────────────┤
+    │     saleId      │             13             │
+    │     userId      │             3              │
+    │    sellerId     │             2              │
+    │   totalPrice    │          '99.79'           │
+    │ deliveryAddress │       'Anthony Rua'        │
+    │ deliveryNumber  │           '951'            │
+    │    saleDate     │ '2022-08-17T22:51:48.827Z' │
+    └─────────────────┴────────────────────────────┘
+
+      at showCurrentOrderInfo (actions/customer/showCurrentOrderInfo.js:5:11)
+
+  console.log
+    
+    Arquivo "07seller_orders.test.js" encerrado em: 8/17/2022, 7:51:49 PM
+
+      at ../config/setupTest.js:44:13
+          at runMicrotasks (<anonymous>)
+
+FAIL __tests__/end-to-end/07seller_orders.test.js (56.371 s)
+  27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo
+    ✕ O avaliador ira testar se existem data-testids para até os dez primeiros itens contidos na tabela 'sales' (16340 ms)
+  28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos
+    ✕ O avaliador ira testar se os dados associados aos data-testids dos dez primeiros itens batem com os do banco de dados (17830 ms)
+  29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo
+    ✕ O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo (21615 ms)
+
+  ● 27 - Crie uma tela de pedidos da pessoa vendedora com elementos a partir dos data-testids disponíveis no protótipo › O avaliador ira testar se existem data-testids para até os dez primeiros itens contidos na tabela 'sales'
+
+    snapShotId: 1660776653881
+
+    Não foi possível clicar no elemento de referência '[data-testid='customer_products__element-navbar-link-logout']'
+
+      35 |   logout: {
+      36 |     default: async (page) => {
+    > 37 |       await expect(page).toClickOnElement({
+         |                          ^
+      38 |         selector: customerProductsPage.element.navbar.links.logout,
+      39 |       });
+      40 |       await expect(page).toCompareURL(`${host}/login`);
+
+      at Object.default (actions/common/navigate.js:37:26)
+      at Object.<anonymous> (07seller_orders.test.js:43:12)
+
+  ● 28 - Desenvolva a tela de pedidos da pessoa vendedora de forma a conter a lista de pedidos do mesmo com os dados corretos › O avaliador ira testar se os dados associados aos data-testids dos dez primeiros itens batem com os do banco de dados
+
+    snapShotId: 1660776670232
+
+    Não foi possível clicar no elemento de referência '[data-testid='customer_products__element-navbar-link-logout']'
+
+      35 |   logout: {
+      36 |     default: async (page) => {
+    > 37 |       await expect(page).toClickOnElement({
+         |                          ^
+      38 |         selector: customerProductsPage.element.navbar.links.logout,
+      39 |       });
+      40 |       await expect(page).toCompareURL(`${host}/login`);
+
+      at Object.default (actions/common/navigate.js:37:26)
+      at Object.<anonymous> (07seller_orders.test.js:43:12)
+
+  ● 29 - Desenvolva a tela de pedidos da pessoa vendedora de forma a dar acesso à tela de detalhes de um pedido ao clicar no card do mesmo › O avaliador acessará a tela de detalhes do último pedido pela tela de pedidos, após o checkout do mesmo
+
+    snapShotId: 1660776688063
+
+    Não foi possível clicar no elemento de referência '[data-testid='customer_products__element-navbar-link-logout']'
+
+      35 |   logout: {
+      36 |     default: async (page) => {
+    > 37 |       await expect(page).toClickOnElement({
+         |                          ^
+      38 |         selector: customerProductsPage.element.navbar.links.logout,
+      39 |       });
+      40 |       await expect(page).toCompareURL(`${host}/login`);
+
+      at Object.default (actions/common/navigate.js:37:26)
+      at Object.<anonymous> (07seller_orders.test.js:43:12)
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 3 total
+Snapshots:   0 total
+Time:        56.422 s
+Ran all test suites matching /07/i.
