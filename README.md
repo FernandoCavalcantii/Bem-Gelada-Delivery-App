@@ -35,6 +35,7 @@
       <a href="#iniciando-a-aplicação">Iniciando aplicação</a>
       <ul>
         <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#env">.env</a></li>
         <li><a href="#instalação">Instalação</a></li>
       </ul>
     </li>
@@ -49,7 +50,7 @@
 ## Sobre o projeto
 
 <p align="justify">
-Este projeto finalizou o módulo de Back-end no curso de Desenvolvimento Web da Trybe. A aplicação foi desenvolvida em um grupo formado por 05 integrantes, simulando um ambiente real de desenvolvimento em equipe. Foi uma experiência muito rica, tanto em termos de praticar o conteúdo técnico, quanto de troca de aprendizados entre os integrantes e desenvolvimento de habilidades interpessoais. Cooperação, comunicação, ensinar e aprender foram pontos bastante exercitados pela equipe.
+Este projeto finalizou o módulo de Back-end no curso de Desenvolvimento Web da Trybe. A aplicação foi desenvolvida em um grupo formado por 05 integrantes, simulando um ambiente real de desenvolvimento em equipe. Foi uma experiência muito rica, tanto em termos de praticar o conteúdo técnico, quanto de troca de aprendizados entre os integrantes e desenvolvimento de habilidades interpessoais. Cooperação, comunicação, empatia, ensinar e aprender foram pontos bastante exercitados pela equipe.
 </p>
 <p align="justify">
 <strong><i>Bem Gelada</i></strong> é uma aplicação completa que integra Front-end, Back-end e um banco de dados MySQL. Trata-se de uma <b>aplicação para gerenciar um sistema de delivery de bebidas</b>. Existem três tipos de usuários: <strong>clientes, vendedores e administradores</strong>. 
@@ -62,6 +63,9 @@ Este projeto finalizou o módulo de Back-end no curso de Desenvolvimento Web da 
 </p>
 <p align="justify">
 As senhas dos usuários são convertidas e armazenadas no banco de dados como <strong>hashs md5</strong>. A tradução da senha inserida pelo usuário é realizada no momento da requisição de login feita para a <b>API</b>.
+</p>
+<p align="justify">
+Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, validando se o mesmo tem permissão para realização de determinadas requisições. 
 </p>
 <p align="justify">
 Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, validando se o mesmo tem permissão para realização de determinadas requisições. 
@@ -123,6 +127,7 @@ Efetuado o login, o administrador será redirecionado para a <strong>tela da pes
 :small_blue_diamond: É possível criar novos usuários (clientes, vendedores e administradores) válidos.
 
 :small_blue_diamond: A criação de usuários aqui utiliza rota diferente da utilizada na de registro, pois o administrador pode atribuir o tipo de usuário que esta sendo criado (cliente, vendedor ou administrador).
+</p>
 </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -158,6 +163,27 @@ A tabela abaixo contém os dados dos usuários que são cadastrados ao resetar o
 
 ### Pré-requisitos
 
+É <b>necesário</b> ter instalado em sua máquina as seguintes ferramentas:
+ - [Git](https://git-scm.com).
+ - [Node.js](https://nodejs.org/en/).
+ - Um editor de código como [VSCode](https://code.visualstudio.com/), [Sublime Text](https://www.sublimetext.com/) ou outro de sua preferência.
+
+Ferramentas opcionais:
+ - [MySQL WorkBench](https://www.mysql.com/products/workbench/), a extensão do VSCode [Database Client](https://github.com/cweijan/vscode-database-client), ou outra ferramenta de sua escolha para manejar bancos de dado SQL.
+ - Um cliente de API REST como [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/) ou outro de sua preferência, para fazer requisições para a API.
+
+ ### .env
+ 
+ O projeto utiliza um arquivo <b>.env</b> para definir as variáveis de ambiente. O projeto contém um arquivo <b>.env.example</b>, que possui uma sugestão de configuração das variáveis necessárias para rodar a aplicação. As variáveis de ambiente do projeto são:
+ 
+- NODE_ENV: Define se a aplicação Node rodará em ambiente de `production`, `development` ou `test`. 
+- API_PORT: A porta local que será utilizada pelo back-end.
+- MYSQL_HOST: O name do host padrão utilizado pelo cliente de linha de comando MySQL.
+- MYSQL_PORT: A porta local que será utilizada pelo banco de dados.
+- MYSQL_USER: Nome do usuário no servidor MySQL.
+- MYSQL_DB_NAME: Nome do banco de dados local.
+- EVAL_ALWAYS_RESTORE_DEV_DB: Opcionalmente no desenvolvimento local, você pode alterar o valor EVAL_ALWAYS_RESTORE_DEV_DB do arquivo .env em ./back-end para false, o que persistirá os dados dos testes locais durante os mesmos.
+- MYSQL_PASSWORD: Senha do banco de dados local.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -210,7 +236,79 @@ Em um terminal:
 
 ## Rotas
 
+URL base: http://localhost:3001 (a porta ao final da URL é a definida na variável API_PORT do .env).
+
+⚠️ <strong>Aviso</strong>: Ao acessar a URL base, o usuário é automaticamente redirecionado para a rota http://localhost:3001/login.
+
+<details>
+  <summary><h3>Images</h3></summary>
+  
+  - <b>[ GET ] /images/:nomeDoArquivoJPG -</b> No sucesso, retorna status HTTP 200 e a imagem das bebidas com a extensão .jpg.
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details> 
+
+<details>
+  <summary><h3>Login</h3></summary>
+  
+- <b>[ POST ] /login -</b> No sucesso, retorna status HTTP 200 e um objeto com um token, conforme exemplo:
+```sh
+http://localhost:3001/login
+Request body
+{ 
+  "email": "zebirita@email.com",
+  "password": "$#zebirita#$"
+}
+```
+ ```sh
+ // Retorno da API
+ { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
+ ```
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details> 
+
+<details>
+  <summary><h3>Products</h3></summary>
+  
+- <b>[ GET ] /products -</b> No suceso, retorna status HTTP 200 e uma array contendo <b>todos os produtos</b>, conforme exemplo:
+
+ ```sh
+http://localhost:3001/products
+Request
+ ```
+
+```sh
+// Retorno da API
+[
+    {
+        "id": 1,
+        "name": "Skol Lata 250ml",
+        "price": "2.20",
+        "url_image": "http://localhost:3001/images/skol_lata_350ml.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Heineken 600ml",
+        "price": "7.50",
+        "url_image": "http://localhost:3001/images/heineken_600ml.jpg"
+    },
+    ...
+]
+```
+
+- <b>[ GET ] /products/:ID -</b> No suceso, retorna status HTTP 200 e um objeto contendo <b>o produto do ID passado pelo parâmetro</b>, conforme exemplo:
+
+```sh
+{
+  "id": 1,
+  "name": "Skol Lata 250ml",
+  "price": "2.20",
+  "url_image": "http://localhost:3001/images/skol_lata_350ml.jpg"
+}
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details> 
+
+
 
 ## Contato
 
