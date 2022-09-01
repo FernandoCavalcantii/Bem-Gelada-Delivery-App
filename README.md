@@ -78,9 +78,6 @@ As senhas dos usuários são convertidas e armazenadas no banco de dados como <s
 <p align="justify">
 Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, validando se o mesmo tem permissão para realização de determinadas requisições. 
 </p>
-<p align="justify">
-Uma vez que seja realizado o login ou quando um novo usuário se registra (já sendo redirecionado para a <strong>tela da lista dos pedidos</strong>), é gerado um token, com intuito de autenticar as requisições após o término do fluxo comum a todos os usuários. Através deste token, também é realizada a verificação do tipo de usuário, validando se o mesmo tem permissão para realização de determinadas requisições. 
-</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FLUXOS -->
