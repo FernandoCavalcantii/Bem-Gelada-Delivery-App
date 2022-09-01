@@ -39,7 +39,16 @@
         <li><a href="#instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#rotas">Rotas</a></li>
+    <li>
+      <a href="#rotas">Rotas</a>
+      <ul>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#sales">Sales</a></li>
+        <li><a href="#users">Users</a></li>
+      </ul>
+    </li>
     <li><a href="#contato">Contato</a></li>
   </ol>
 </details>
@@ -52,7 +61,7 @@
 Este projeto finalizou o módulo de Back-end no curso de Desenvolvimento Web da Trybe. A aplicação foi desenvolvida em um grupo formado por 05 integrantes, simulando um ambiente real de desenvolvimento em equipe. Foi uma experiência muito rica, tanto em termos de praticar o conteúdo técnico, quanto de troca de aprendizados entre os integrantes e desenvolvimento de habilidades interpessoais. Cooperação, comunicação, empatia, ensinar e aprender foram pontos bastante exercitados pela equipe.
 </p>
 <p align="justify">
-<strong><i>Bem Gelada</i></strong> é uma aplicação completa que integra Front-end, Back-end e um banco de dados MySQL. Trata-se de uma <b>aplicação para gerenciar um sistema de delivery de bebidas</b>. Existem três tipos de usuários: <strong>clientes, vendedores e administradores</strong>.
+<strong><i>Bem Gelada</i></strong> é uma aplicação completa que integra Front-end, Back-end e um banco de dados MySQL. Trata-se de uma <b>aplicação para gerenciar um sistema de delivery de bebidas</b>. Existem três tipos de usuários: <strong>customer</strong> (cliente), <strong>seller</strong> (vendedor) e <strong>administrator</strong> (administrador).
 
   <ol>
     <li><strong>O usuário cliente</strong> tem a capacidade de realizar a compra de itens contidos na lista de produtos e mudar o status do pedido para <b><i>recebido</i></b>.</li>
@@ -264,17 +273,22 @@ URL base: http://localhost:3001 (a porta ao final da URL é a definida na variá
 <details>
   <summary><h3>Images</h3></summary>
   
-  - <b>[ GET ] /images/:nomeDoArquivoJPG -</b> No sucesso, retorna status HTTP 200 e a imagem das bebidas com a extensão .jpg.
+  - <b>[ GET ] /images/:nome-do-arquivo-jpg</b>
+
+:information_source: : Esta rota retorna a imagem em <b>jpg</b> referente ao nome do arquivo passado pelo parâmetro.
+
+Request para:
 
 ```sh
 http://localhost:3001/images/antarctica_pilsen_300ml.jpg
-Request
 ```
 
-```sh
-// Retorno da API
-<img src="back-end/src/images/antarctica_pilsen_300ml.jpg">
-```
+Retorno da API:
+
+- Status HTTP: 200.
+- Body:
+
+<img src="back-end/src/images/antarctica_pilsen_300ml.jpg" height=250px width=250px>
 
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 </details>
@@ -284,19 +298,34 @@ Request
 <details>
   <summary><h3>Login</h3></summary>
   
-- <b>[ POST ] /login -</b> No sucesso, retorna status HTTP 200 e um objeto com um token, conforme exemplo:
+- <b>[ POST ] /login</b>
+
+:information_source: : Esta rota retorna um token utilizado para autenticação do usuário nas requisições após o login.
+
+Request para:
+
 ```sh
 http://localhost:3001/login
-Request body
-{ 
-  "email": "zebirita@email.com",
-  "password": "$#zebirita#$"
+```
+
+Request body:
+
+```sh
+{
+"email": "zebirita@email.com",
+"password": "$#zebirita#$"
 }
 ```
- ```sh
- // Retorno da API
- { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
- ```
+
+Retorno da API:
+
+- Status HTTP: 200.
+- Body:
+
+```sh
+{ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
+```
+
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 </details>
 
@@ -305,15 +334,28 @@ Request body
 <details>
   <summary><h3>Products</h3></summary>
   
-- <b>[ GET ] /products -</b> No suceso, retorna status HTTP 200 e uma array contendo <b>todos os produtos</b>, conforme exemplo:
+- <b>[ GET ] /products</b>
+
+:information_source: : Esta retorna os dados de todos os produtos cadastrados no banco de dados.
+
+Request para:
 
 ```sh
 http://localhost:3001/products
-Request
 ```
 
+Request headers:
+
 ```sh
-// Retorno da API
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Retorno da API:
+
+- Status HTTP: 200.
+- Body:
+
+```sh
 [
     {
         "id": 1,
@@ -331,7 +373,26 @@ Request
 ]
 ```
 
-- <b>[ GET ] /products/:ID -</b> No suceso, retorna status HTTP 200 e um objeto contendo <b>o produto do ID passado pelo parâmetro</b>, conforme exemplo:
+- <b>[ GET ] /products/:ID</b>
+
+:information_source: : Esta retorna os dados do produto do ID passado pelo parâmetro.
+
+Request para:
+
+```sh
+http://localhost:3001/products/1
+```
+
+Request headers:
+
+```sh
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Retorno da API:
+
+- Status HTTP: 200.
+- Body:
 
 ```sh
 {
@@ -345,8 +406,214 @@ Request
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 </details>
 
+<!-- SALES -->
+<details>
+<summary><h3>Sales<h3></summary>
+
+- <b>[ POST ] /sales</b>
+
+:information_source: : Esta rota cadastra uma nova venda, retornando os dados da mesma.
+
+Request para:
+
+```sh
+http://localhost:3001/sales
+```
+
+Request headers:
+
+```sh
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Request body:
+
+```sh
+{
+  "userId": 2,
+  "sellerId": 2,
+  "totalPrice": 20,
+  "deliveryAddress": "teste",
+  "deliveryNumber": "10",
+  "itemsSold": [{"productId": 2, "quantity": 5 }]
+}
+```
+
+Retorno da API:
+
+- Status HTTP: 201.
+- Body:
+
+```sh
+{
+  "status": "Pendente",
+  "id": 1,
+  "userId": 2,
+  "sellerId": 2,
+  "totalPrice": 20,
+  "deliveryAddress": "teste",
+  "deliveryNumber": "10",
+  "saleDate": "2022-09-01T19:19:07.625Z"
+}
+```
+
+- <b>[ GET ] /sales/:ID</b>
+
+:information_source: : Esta rota retorna a venda do ID passado pelo parâmetro.
+
+Request para:
+
+```sh
+http://localhost:3001/sales/1
+```
+
+Request headers:
+
+```sh
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Resposta da API:
+
+- Status HTTP: 200.
+- Body:
+
+```sh
+{
+    "id": 1,
+    "userId": 2,
+    "sellerId": 2,
+    "totalPrice": "20.00",
+    "deliveryAddress": "teste",
+    "deliveryNumber": "10",
+    "saleDate": "2022-09-01T19:19:07.000Z",
+    "status": "Pendente",
+    "products": [
+        {
+            "id": 2,
+            "name": "Heineken 600ml",
+            "price": "7.50",
+            "SaleProduct": {
+                "quantity": 5
+            }
+        }
+    ],
+    "seller": {
+        "name": "Fulana Pereira"
+    },
+    "customer": {
+        "name": "Fulana Pereira"
+    }
+}
+```
+
+- <b>[ GET ] /sales/user/:ID</b>
+
+:information_source: : Esta rota retorna todas as vendas registradas do <b>usuário seller</b> do ID passado pelo parâmetro.
+
+Request para:
+
+```sh
+http://localhost:3001/sales/user/2
+```
+
+Request headers:
+
+```sh
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Resposta da API:
+
+- Status HTTP: 200.
+- Body:
+
+```sh
+[
+    {
+        "id": 1,
+        "userId": 2,
+        "sellerId": 2,
+        "totalPrice": "20.00",
+        "deliveryAddress": "teste",
+        "deliveryNumber": "10",
+        "saleDate": "2022-09-01T19:19:07.000Z",
+        "status": "Pendente",
+        "products": [
+            {
+                "id": 2,
+                "name": "Heineken 600ml",
+                "price": "7.50",
+                "SaleProduct": {
+                    "quantity": 5
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "userId": 2,
+        "sellerId": 2,
+        "totalPrice": "20.00",
+        "deliveryAddress": "teste",
+        "deliveryNumber": "10",
+        "saleDate": "2022-09-01T20:08:53.000Z",
+        "status": "Pendente",
+        "products": [
+            {
+                "id": 1,
+                "name": "Skol Lata 250ml",
+                "price": "2.20",
+                "SaleProduct": {
+                    "quantity": 5
+                }
+            }
+        ]
+    }
+]
+```
+
+- <b>[ PUT ] /sales/:ID</b>
+
+:information_source: : Esta rota é usada por um <b>usuário seller</b> para alterar o status do pedido para "Preparando" ou "Em trânsito".
+
+Request para:
+
+```sh
+http://localhost:3001/sales/1
+```
+
+Request headers:
+
+```sh
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Resposta da API:
+
+- Status HTTP: 200.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+</details>
 <!-- CONTATO -->
 
+<!-- USERS -->
+
+<details>
+<summary><h3>Users<h3></summary>
+
+:construction: : A documentação desta seção ainda está em construção!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details>
+
 ## Contato
+
+<p align="justify">
+Tem alguma sugestão, melhoria, dúvida, gostou do projeto ou quer conversar sobre algum assunto? Entre em contato comigo, ficarei muito feliz com a interação. Responderei com a maior brevidade possível!
+</p>
+
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>](https://www.linkedin.com/in/fernando-augusto-cavalcanti/)
+<a href = "mailto:fafhcavalcanti@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
